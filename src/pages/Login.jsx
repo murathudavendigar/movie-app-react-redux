@@ -29,7 +29,7 @@ const Login = () => {
     <div className="h-screen bg-slate-600 flex justify-center items-center text-center">
       <form onSubmit={handleSubmit}>
         <input
-          className="mb-5"
+          className="my-5"
           placeholder="email"
           name="email"
           onChange={handleChange}
