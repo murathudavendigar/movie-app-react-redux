@@ -28,23 +28,50 @@ const Login = () => {
   return (
     <div className="h-screen bg-slate-600 flex justify-center items-center text-center">
       <form onSubmit={handleSubmit}>
-        <input
-          className="my-5"
-          placeholder="email"
-          name="email"
-          onChange={handleChange}
-          value={values.email}
-        />
-        <p>{errors.email ? errors.email : ""}</p>
-        <input
-          className="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
-          placeholder="password"
-          name="password"
-          onChange={handleChange}
-          value={values.password}
-        />
-        <p>{errors.password ? errors.password : ""}</p>
-        <button type="submit">Login</button>
+        {errors.email ? (
+          <input
+            className="bg-red-300 border border-red-500 text-red-900 dark:text-red-400 placeholder-red-700 text-xl rounded-lg focus:outline-none focus:ring-red-500 focus:border-red-500 block w-full p-3 my-5"
+            placeholder="email"
+            name="email"
+            onChange={handleChange}
+            value={values.email}
+          />
+        ) : (
+          <input
+            className="bg-green-300 border border-green-500 text-green-900  placeholder-green-700 text-xl rounded-lg focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-3 my-5"
+            placeholder="email"
+            name="email"
+            onChange={handleChange}
+            value={values.email}
+          />
+        )}
+        {errors.password ? (
+          <input
+            className="bg-red-300 border border-red-500 text-red-900  placeholder-red-700 text-xl rounded-lg focus:outline-none focus:ring-red-500 focus:border-red-500 block w-full p-3 my-5"
+            placeholder="password"
+            name="password"
+            onChange={handleChange}
+            value={values.password}
+          />
+        ) : (
+          <input
+            className="bg-green-300 border border-green-500 text-green-900  placeholder-green-700 text-xl rounded-lg focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-3 my-5"
+            placeholder="password"
+            name="password"
+            onChange={handleChange}
+            value={values.password}
+          />
+        )}
+        <p>
+          {errors.email
+            ? errors.email
+            : errors.password || "Please fill the boxes"}
+        </p>
+        <button
+          type="submit"
+          className="mt-10 bg-blue-500  text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          Login
+        </button>
       </form>
     </div>
   );
