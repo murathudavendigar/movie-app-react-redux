@@ -6,7 +6,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
 import {
   fetchFail,
@@ -58,6 +57,7 @@ const useAuthCalls = () => {
   const logout = () => {
     signOut(auth);
     dispatch(logoutSuccess());
+
     toastWarningNotify("You are logged out !!!!");
   };
 
