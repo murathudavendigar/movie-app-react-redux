@@ -4,11 +4,13 @@ import useAuthCalls from "../hooks/useAuthCalls";
 import * as Yup from "yup";
 
 const loginSchema = Yup.object({
-  email: Yup.string().email("geçersiz email girdin").required("zorunlu "),
+  email: Yup.string()
+    .email("Please enter a valid email")
+    .required("Email is required"),
   password: Yup.string()
-    .min(8, "en az 8 karakter")
-    .max(16, "en fazla 16 karakter")
-    .required("zorunlu"),
+    .min(8, "Minimum 8 character")
+    .max(16, "Maximum 16 character")
+    .required("Password is required"),
 });
 
 const Login = () => {
@@ -47,6 +49,7 @@ const Login = () => {
         )}
         {errors.password ? (
           <input
+            type="password"
             className="bg-red-300 border border-red-500 text-red-900  placeholder-red-700 text-xl rounded-lg focus:outline-none focus:ring-red-500 focus:border-red-500 block w-full p-3 my-5"
             placeholder="password"
             name="password"
@@ -55,6 +58,7 @@ const Login = () => {
           />
         ) : (
           <input
+            type="password"
             className="bg-green-300 border border-green-500 text-green-900  placeholder-green-700 text-xl rounded-lg focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-3 my-5"
             placeholder="password"
             name="password"
@@ -69,7 +73,8 @@ const Login = () => {
         </p>
         <button
           type="submit"
-          className="mt-10 bg-blue-500  text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          disabled={errors.email || errors.password ? true : false}
+          className="mt-10 bg-blue-500  text-white font-bold py-2 px-4 border hover:bg-blue-300 transition-all border-blue-700 rounded disabled:bg-blue-100 ">
           Login
         </button>
       </form>
