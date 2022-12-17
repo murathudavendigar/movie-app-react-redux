@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import useAuthCalls from "../hooks/useAuthCalls";
 import Login from "../pages/Login";
@@ -13,7 +13,7 @@ const AppRouter = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" index element={<Main />} />
@@ -21,7 +21,7 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Main />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 

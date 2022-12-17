@@ -6,6 +6,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
 import {
   fetchFail,
@@ -23,6 +24,7 @@ import {
 
 const useAuthCalls = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const login = async (values) => {
     const { email, password } = values;
@@ -31,6 +33,7 @@ const useAuthCalls = () => {
       await signInWithEmailAndPassword(auth, email, password);
       dispatch(loginSuccess());
       toastSuccessNotify("Welcome !!");
+      navigate("/");
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify("Something went wrong !!");
