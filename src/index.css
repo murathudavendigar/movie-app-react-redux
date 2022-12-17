@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: grey;
+}
+
+.movie-vote-border {
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.movie-vote-border.green {
+  background-color: green;
+}
+
+.movie-vote-border.orange {
+  background-color: orange;
+}
+
+.movie-vote-border.red {
+  background-color: red;
+}
+
+.handmade-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
