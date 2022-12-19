@@ -3,21 +3,40 @@ import { useSelector } from "react-redux";
 import MovieCard from "../components/MovieCard";
 import useMovieCalls from "../hooks/useMovieCalls";
 import loadingIcon from "../assets/loadingIcon.svg";
+import { toastWarningNotify } from "../helpers/ToastNotify";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
   const { getMovies } = useMovieCalls();
   const { movies, loading } = useSelector((state) => state.movie);
+  const { currentUser } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const [pageNumber, setPageNumber] = useState(1);
+  const [searchMovie, setSearchMovie] = useState("");
 
   useEffect(() => {
     getMovies(pageNumber);
   }, [pageNumber]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchMovie && currentUser) {
+      navigate("/search", { state: searchMovie });
+    } else if (!currentUser) {
+      toastWarningNotify("Please login to see details");
+    } else {
+      toastWarningNotify("Please enter a text");
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-center flex-wrap">
-        <form>
-          <input type="search" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            onChange={(e) => setSearchMovie(e.target.value)}
+          />
           <button type="submit">Search</button>
         </form>
         <div className="flex justify-center flex-wrap gap-8 my-12">

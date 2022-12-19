@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import "../index.css";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { currentUser } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const [starCount, setStarCount] = useState([]);
   const imageAPI = `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
   const defaultImage =
@@ -68,7 +70,9 @@ const MovieCard = ({ movie }) => {
   }, []);
 
   return (
-    <div className="max-w-sm w-full bg-gray-600">
+    <div
+      className="max-w-sm w-full bg-gray-600"
+      onClick={() => navigate("/detail", { state: movie })}>
       <img
         className="transition-all hover:opacity-30 cursor-pointer"
         src={movie.poster_path ? imageAPI : defaultImage}
