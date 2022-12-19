@@ -8,10 +8,10 @@ const useMovieCalls = () => {
   const apiKey = process.env.REACT_APP_movieApiKey;
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
 
-  const getMovies = async () => {
+  const getMovies = async (pageNumber) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(`${url}&page=${pageNumber}`);
       dispatch(fetchSuccess(data));
     } catch (error) {
       dispatch(fetchFail());

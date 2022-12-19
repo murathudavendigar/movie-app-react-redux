@@ -51,6 +51,7 @@ const useAuthCalls = () => {
       });
       dispatch(registerSuccess());
       toastSuccessNotify("Welcome !!");
+      navigate("/");
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify("Something went wrong !!");
@@ -60,7 +61,7 @@ const useAuthCalls = () => {
   const logout = () => {
     signOut(auth);
     dispatch(logoutSuccess());
-
+    navigate("/login");
     toastWarningNotify("You are logged out !!!!");
   };
 
