@@ -71,14 +71,19 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div
-      className="max-w-sm w-full bg-gray-600"
-      onClick={() => navigate("/detail", { state: movie })}>
+      className="max-w-sm w-full bg-gray-600 img-movie"
+      onClick={() => navigate("/detail", { state: movie.id })}>
+      <div className="hover-text">
+        <p className="par">Go detail</p>
+      </div>
       <img
-        className="transition-all hover:opacity-30 cursor-pointer"
+        className="transition-all hover:opacity-20 cursor-pointer "
         src={movie.poster_path ? imageAPI : defaultImage}
         alt="poster-movie"
+        height="280px"
       />
-      <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-6 flex flex-col justify-between leading-normal ">
+
+      <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-6 flex flex-col justify-between leading-normal h-[270px]">
         <div className="mb-8">
           <div className="text-gray-900 font-bold text-xl mb-2 text-center">
             {movie.title}

@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Anek+Malayalam&family=Codystar&family=Italiana&display=swap");
 
 body {
   background-color: grey;
+  font-family: "Anek Malayalam", sans-serif;
+  /* font-family: 'Codystar', cursive; */
 }
 
 .movie-vote-border {
@@ -30,4 +33,29 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hover-text {
+  position: absolute;
+  font-family: "Italiana", serif;
+  color: white;
+  transform: translateY(220px) translateX(80px);
+  font-size: 3rem;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.hover-text .par {
+  transform: translateY(200px);
+  border: 3px solid red;
+  padding: 0.3rem 0.7rem;
+  transition: all 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.img-movie:hover .par {
+  transform: translateY(0);
+  color: red;
+  font-weight: 800;
 }
