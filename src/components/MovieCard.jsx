@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
+import { toastWarningNotify } from "../helpers/ToastNotify";
 
 const MovieCard = ({ movie }) => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -72,7 +73,10 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       className="max-w-sm w-full bg-gray-600 img-movie"
-      onClick={() => navigate("/detail", { state: movie.id })}>
+      onClick={() => {
+        navigate("/detail", { state: movie.id });
+        !currentUser && toastWarningNotify("Please login to see details");
+      }}>
       <div className="hover-text">
         <p className="par">Go detail</p>
       </div>
